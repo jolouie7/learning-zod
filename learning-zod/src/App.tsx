@@ -18,6 +18,7 @@ function App() {
     email: z.string().email(),
     // userRole: z.enum(["student", "teacher"]).default("student"), , <-- currently has better support as of Jan 18, 2023
     userRole: z.nativeEnum(UserRole).default(UserRole.STUDENT),
+    friends: z.array(z.string()),
   });
   // .pick({ username: true }); //You can use pick to pick out a key
   // .omit({ username: true }); //You can use omit to omit certain keys
@@ -36,6 +37,7 @@ function App() {
     isProgrammer: true,
     email: "email@test.com",
     userRole: "teacher",
+    friends: ["Kyle", "Julie"], //.nonempty() //.min() //.max() //.length()
   };
 
   // console.log(UserSchema.parse(user));
